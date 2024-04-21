@@ -14,7 +14,7 @@ function init() {
             },
             {
                 type: 'input',
-                message: 'What color should the characters be? ',
+                message: 'What color should the characters be?',
                 name: 'inputLogoColor',
             },
             {
