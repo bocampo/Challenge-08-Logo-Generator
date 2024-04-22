@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
-const LogoCharacters = require('/LogoCharacters.js');
-const Circle = require('./Circle.js');
-const Triangle = require('./Triangle.js');
-const Square = require('./Square.js');
+const fs = require('fs');
+const LogoCharacters = require('./lib/LogoCharacters.js');
+const Circle = require('./lib/Circle.js');
+const Triangle = require('./lib/Triangle.js');
+const Square = require('./lib/Square.js');
 
 function init() {
     inquirer
@@ -14,7 +15,7 @@ function init() {
             },
             {
                 type: 'input',
-                message: 'What color should the characters be?',
+                message: 'What color should the characters be? ',
                 name: 'inputLogoColor',
             },
             {
@@ -29,7 +30,7 @@ function init() {
                 name: 'inputShapeColor'
             }
         ])
-        .then((response) => writeToFile("GeneratedLogo.svg", createLogo(response)));
+        .then((response) => fs.writeFile("GeneratedLogo.svg", createLogo(response)));
 }
 
 
