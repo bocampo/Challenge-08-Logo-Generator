@@ -30,30 +30,36 @@ function init() {
                 name: 'inputShapeColor'
             }
         ])
-        .then((response) => fs.writeFile("GeneratedLogo.svg", createLogo(response)));
+        .then((response) => fs.writeFile("GeneratedLogo.svg", createLogo(response), function () {
+            console.log("Successfuly Written!");
+        }));
 }
 
 
 function createLogo(data) {
+    let selectedShape = ``;
 
     switch (data.shapeInput) {
         case 'Circle':
-            const circle = new Circle();
-            circle(data.inputShapeColor);
+            selectedShape = new Circle(data.inputShapeColor);
             break;
         case 'Triangle':
-            const triangle = new Triangle();
-            triangle(data.inputShapeColor);
+            selectedShape = new Triangle(data.inputShapeColor);
             break;
         case 'Square':
-            const square = new Square();
-            square(data.inputShapeColor);
+            selectedShape = new Square(data.inputShapeColor);
             break;
     }
 
-    characters = new LogoCharacters();
+    const characters = new LogoCharacters(data.inputLogo, data.inputLogoColor);
 
-    characters(data.inputLogo, data.inputLogoColor);
+    return `<svg version="1.1" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+            ${selectedShape.getShapeLogo()} 
+
+            ${characters.getTextLogo()} 
+
+        </svg>`;
 }
 
 init();
