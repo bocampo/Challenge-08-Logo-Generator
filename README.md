@@ -22,7 +22,4 @@ Below is an image of the logo created using this project:
 ![alt text](<Screenshot 2024-04-26 132850.png>)
 
 
-
-Below is a video of how the project runs
-
-[text](<../../../Downloads/Untitled_ Apr 26, 2024 1_47 PM.webm>)
+[Demo](./Logo-Generator-Demo.mp4)
